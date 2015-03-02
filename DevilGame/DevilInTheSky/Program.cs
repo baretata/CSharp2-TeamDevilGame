@@ -13,6 +13,9 @@ namespace DevilInTheSky
     class Program
     {
 
+
+
+
         // game settings
        static public int difficultyLevel = 10;
        static public int gameSpeed = 100;
