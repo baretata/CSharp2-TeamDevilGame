@@ -12,7 +12,7 @@
         public Bullet(Point position, ConsoleColor color, int direction)
         {
             this.position = position;
-            this.color = color;
+            this.color = ConsoleColor.Cyan;
             this.direction = direction;
         }
 

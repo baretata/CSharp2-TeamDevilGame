@@ -187,6 +187,7 @@
                 if (DevilCollision(k, monsters))
                 {
                     lifes--;
+                    Console.Beep();
                     if (lifes == 0)
                     {
                         devilDie.Play();
