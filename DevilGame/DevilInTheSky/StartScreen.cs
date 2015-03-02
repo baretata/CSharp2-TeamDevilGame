@@ -1,17 +1,26 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Media;
-namespace DevilInTheSky
+﻿namespace DevilInTheSky
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Media;
+
     class StartScreen
     {
-        public SoundPlayer startScreen = new SoundPlayer(@"Scary_Demon_Haunting.wav");
+        public SoundPlayer startScreen = new SoundPlayer(@"..\..\Scary_Demon_Haunting.wav");
 
         public void PlaySound()
         {
-            startScreen.PlayLooping();
+            try
+            {
+                startScreen.PlayLooping();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Problem with sound file loading!");
+            }
         }
+
         public void StopSound()
         {
             startScreen.Stop();
@@ -20,8 +29,7 @@ namespace DevilInTheSky
         public void SetFieldSize()
         {
             Console.BufferHeight = Console.WindowHeight = 78;
-            Console.BufferWidth = Console.WindowWidth = 140;// ~70 for gamefield, rest for score & legend
-           
+            Console.BufferWidth = Console.WindowWidth = 140;
         }
 
         public void PrintOnPosition(int x, int y, string str, ConsoleColor color)
@@ -31,7 +39,7 @@ namespace DevilInTheSky
             Console.WriteLine(str);
         }
 
-       public bool StartScreenMenu()
+        public bool StartScreenMenu()
         {
             SetFieldSize();
 
@@ -82,6 +90,7 @@ namespace DevilInTheSky
             while (true)
             {
                 PrintOnPosition(Console.WindowWidth / 2 - 11, Console.WindowHeight / 2, "PRESS ENTER TO START!", ConsoleColor.White);
+
                 for (int i = 0; i < 2; i++)
                 {
                     if (i == 0)
@@ -100,16 +109,11 @@ namespace DevilInTheSky
                     ConsoleKeyInfo pressedKey = Console.ReadKey(true);
                     if (pressedKey.Key == ConsoleKey.Enter)
                     {
-                       return true;
-                       
+                        return true;
+
                     }
                 }
-
             }
-
         }
-
-       
-
     }
 }

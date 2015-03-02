@@ -1,14 +1,13 @@
-﻿using System;
-using System.Threading;
-using System.Drawing;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-
-// Test
-namespace DevilInTheSky
+﻿namespace DevilInTheSky
 {
+    using System;
+    using System.Threading;
+    using System.Drawing;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+
     class GameFrame
     {
         public Stopwatch watch = new Stopwatch();
@@ -40,11 +39,7 @@ namespace DevilInTheSky
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = color;
             Console.Write(str);
-
         }
-
-        
-
 
         public void PrintFrame()    // CHANGES IN THE FRAME SIZE 
         {
@@ -55,13 +50,15 @@ namespace DevilInTheSky
             }
             PrintOnScreen(0, 0, new string('░', Console.WindowWidth - 30), ConsoleColor.DarkGray);
             PrintOnScreen(0, Console.BufferHeight - 5, new string('░', Console.WindowWidth - 30), ConsoleColor.DarkGray);
-            for (int i = 0; i < Console.BufferHeight - 4; i++)// The frame around the side menu
+
+            for (int i = 0; i < Console.BufferHeight - 4; i++)      // The frame around the side menu
             {
                 PrintOnScreen(111, i, "█ █", ConsoleColor.DarkRed);
                 PrintOnScreen(137, i, "█ █", ConsoleColor.DarkRed);
 
             }
-            for (int i = 0; i <= 30; i += 10)//The first lines in the side menu
+
+            for (int i = 0; i <= 30; i += 10)       //The first lines in the side menu
             {
                 PrintOnScreen(111, i, new string('█', 29), ConsoleColor.DarkRed);
             }
@@ -69,6 +66,7 @@ namespace DevilInTheSky
             PrintOnScreen(111, 60, new string('█', 29), ConsoleColor.DarkRed); //The last two lines of the menu
             PrintOnScreen(111, Console.BufferHeight - 5, new string('█', 29), ConsoleColor.DarkRed);
         }
+
         public void UpdateData(int scoree, int lifee)                               // NEW METHOD HERE
         {
             this.life = lifee;
