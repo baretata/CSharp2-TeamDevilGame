@@ -16,7 +16,7 @@
         static public int difficultyLevel = 10;
         static public int gameSpeed = 100;
         static public int score = 0;
-        static public int lifes = 5;
+        static public int lifes = 6;
 
         static public string highscoreFilePath = @"..\..\highscores.txt";
         static public string currentName = string.Empty;
@@ -44,7 +44,7 @@
             }
             catch(ArgumentOutOfRangeException e)
             {
-                Console.WriteLine("Please set console font to 6x8 or 6x9 and restart the  game!");
+                Console.WriteLine("Please set console font to raster 6x8, 6x9 or 8x8 and restart the game!");
                 return;
 
             }
@@ -73,7 +73,7 @@
 
                 // set difficult
                 string difficulty = frame.elapsedTime.ToString("mm\\:ss");
-                if (difficulty == "01:00" || difficulty == "02:00" || difficulty == "03:00")
+                if (difficulty == "01:00" || difficulty == "02:00" || difficulty == "03:00" || difficulty == "04:00")
                 {
                     difficultyLevel += 2;
                 }

@@ -32,7 +32,6 @@
 
         int life = 5;
         string score = "Score";
-        int highScore = 0;
 
         public void PrintOnScreen(int x, int y, string str, ConsoleColor color)
         {
@@ -67,7 +66,7 @@
             PrintOnScreen(111, Console.BufferHeight - 5, new string('█', 29), ConsoleColor.DarkRed);
         }
 
-        public void UpdateData(int scoree, int lifee)                               // NEW METHOD HERE
+        public void UpdateData(int scoree, int lifee)                               
         {
             this.life = lifee;
             this.score = scoree.ToString();
@@ -76,8 +75,9 @@
             elapsedTime = watch.Elapsed;
             string displayTime = elapsedTime.ToString("mm\\:ss\\.ff");
             PrintOnScreen(122, 5, displayTime, ConsoleColor.Red);//The elapsed time
-            PrintOnScreen(124, 15, "score:" + score, ConsoleColor.Red);// Score
+            PrintOnScreen(122, 15, "score:" + score, ConsoleColor.Red);// Score
             PrintOnScreen(124, 25, "\x0003 " + life.ToString(), ConsoleColor.Red);// Health
+            string currentTime = DateTime.Now.ToString("hh:mm");//Displays current time
 
             // This prints the messages with a delay
             messageTimer = messageTimer + 1;
@@ -90,7 +90,7 @@
                 }
             }
             PrintOnScreen(118, 45, messages[switchMessage], ConsoleColor.Red);
-            PrintOnScreen(121, 62, "High Score:" + highScore.ToString(), ConsoleColor.Red);
+            PrintOnScreen(123, 62, currentTime, ConsoleColor.Red);
         }
     }
 }
