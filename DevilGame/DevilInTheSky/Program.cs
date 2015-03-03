@@ -25,20 +25,29 @@
 
         static void Main()
         {
-            StartScreen menu = new StartScreen();
-            menu.PlaySound();
-            while (!menu.StartScreenMenu())
+
+            try
             {
-                Thread.Sleep(100);
+                StartScreen menu = new StartScreen();
+                menu.PlaySound();
+                while (!menu.StartScreenMenu())
+                {
+                    Thread.Sleep(100);
+                }
+
+                //  Set Console settings  
+
+                Console.CursorVisible = false;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.BufferHeight = Console.WindowHeight = 78;
+                Console.BufferWidth = Console.WindowWidth = 140;
             }
+            catch(ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine("Please set console font to 6x8 or 6x9 and restart the  game!");
+                return;
 
-            //  Set Console settings  
-
-            Console.CursorVisible = false;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.BufferHeight = Console.WindowHeight = 78;
-            Console.BufferWidth = Console.WindowWidth = 140;
-
+            }
             // define all objects
 
             GameFrame frame = new GameFrame();
@@ -209,7 +218,7 @@
                 Thread.Sleep(gameSpeed);
                 allObjects.Clear();
 
-                for (int i = 1; i < 78; i++)        //95 refresh rate
+                for (int i = 1; i < Console.WindowHeight-5; i++)        // refresh rate
                 {
                     Console.SetCursorPosition(1, i);
                     Console.Write(new String(' ', 109));
